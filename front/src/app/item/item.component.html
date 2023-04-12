@@ -1,0 +1,158 @@
+<div class="container">
+    <!-- Button trigger modal -->
+    <br />
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+      (click)="openModal()"
+    >
+      add item
+    </button>
+    <br />
+    <br />
+  
+    <!-- Modal -->
+    <div
+      class="modal"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h1>add entity</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="name"
+              aria-label="name"
+              aria-describedby="button-addon2"
+              [(ngModel)]="newData.name"
+            />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="contry"
+              aria-label="contry"
+              aria-describedby="button-addon2"
+              [(ngModel)]="newData.contry"
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="postAddItemApi()"
+            >
+              add
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Modal -->
+    <div
+      class="modal"
+      id="staticBackdrop_update"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h1>update entity</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="name"
+              aria-label="name"
+              aria-describedby="button-addon2"
+              [(ngModel)]="newData.name"
+            />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="contry"
+              aria-label="contry"
+              aria-describedby="button-addon2"
+              [(ngModel)]="newData.contry"
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="postUpdateItemApi()"
+            >
+              update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- ----------------------------------------------------------------------------------------------------- -->
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Contry</th>
+          <th scope="col">actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let el of itemData; let i = index">
+          <th scope="row">{{ el._id }}</th>
+          <td>{{ el.name }}</td>
+          <td>{{ el.contry }}</td>
+          <td>
+            <button type="button" class="btn btn-outline-danger" (click)="postDeleteItemApi(el._id)">delete</button>
+            <button type="button" class="btn btn-outline-warning" (click)="openModal_Update(el)">update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
