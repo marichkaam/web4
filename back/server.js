@@ -10,7 +10,7 @@ const notFoundMiddleware = require('./middlewares/not_found')
 const corsMiddleware = require('cors')
 
 const indexRoutes = require('./routes')
-const shopRoutes = require('./routes/shop')
+const projectRoutes = require('./routes/project')
 const itemRoutes = require('./routes/item')
 const locationRoutes = require('./routes/location')
 const locationTypeRoutes = require('./routes/location_type')
@@ -25,7 +25,7 @@ app.use(express.static(__dirname))
 
 app.use(corsMiddleware());
 app.use('/', indexRoutes)
-app.use('/shop', shopRoutes)
+app.use('/project', projectRoutes)
 app.use('/item', itemRoutes)
 app.use('/location', locationRoutes)
 app.use('/location-type', locationTypeRoutes)
